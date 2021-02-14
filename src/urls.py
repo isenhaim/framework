@@ -2,5 +2,6 @@ from src import views
 
 urlpatterns = {
     '/': views.main,
-    '/about': views.about,
+    '/about/': views.about,
+    '/contact/': views.contact,
 }
