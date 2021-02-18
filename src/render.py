@@ -1,10 +1,10 @@
-from jinja2 import Template
-import os
+from jinja2 import Environment, FileSystemLoader
 
 
 def render(template, folder='templates', **kwargs):
-    file = os.path.join(folder, template)
-    with open(file, encoding='utf-8') as f:
-        template = Template(f.read())
+
+    env = Environment()
+    env.loader = FileSystemLoader(folder)
+    template = env.get_template(template)
 
     return template.render(**kwargs)

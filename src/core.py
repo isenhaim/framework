@@ -10,7 +10,6 @@ class Application:
         self.middlewares = middlewares
 
     def __call__(self, environ, start_response):
-
         path = environ['PATH_INFO']
 
         method = environ['REQUEST_METHOD']
@@ -23,12 +22,9 @@ class Application:
         if not path.endswith('/'):
             path = f'{path}/'
 
+        if path in self.urlpatterns:
             view = self.urlpatterns[path]
-            request = {}
-
-            request['method'] = method
-            request['data'] = data
-            request['request_params'] = request_params
+            request = {'method': method, 'data': data, 'request_params': request_params}
 
             for middleware in self.middlewares:
                 middleware(request)
@@ -43,7 +39,8 @@ class Application:
             template = render('404.html')
             return [template.encode('utf-8')]
 
-    def parser_input_data(self, data: str):
+    @staticmethod
+    def parser_input_data(data: str):
         result = {}
         if data:
             data = unquote(data)
@@ -60,7 +57,8 @@ class Application:
             result = self.parser_input_data(data_str)
         return result
 
-    def get_input_data(self, environ):
+    @staticmethod
+    def get_input_data(environ):
         length = int(environ.get('CONTENT_LENGTH', '0'))
         data = environ['wsgi.input'].read(length)
         return data
