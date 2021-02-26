@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="col-md-8 mx-auto">
+        <h1 class="text-center mt-5">Список курсов</h1>
+
+        <table class="table text-center mt-5">
+            <thead class="table-dark">
+                <tr>
+                    <td>Курс</td>
+                    <td>Дублировать</td>
+                </tr>
+
+            </thead>
+            <tbody>
+            {% for item in objects_list %}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td><a href="/copy-course/?name={{item.name}}" class="btn btn-primary">Копировать</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

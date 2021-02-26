@@ -62,3 +62,9 @@ class Application:
         length = int(environ.get('CONTENT_LENGTH', '0'))
         data = environ['wsgi.input'].read(length)
         return data
+
+    def add_route(self, url):
+        def inner(view):
+            self.urlpatterns[url] = view
+
+        return inner
