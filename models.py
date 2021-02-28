@@ -1,4 +1,3 @@
-# from reusepatterns.prototypes import PrototypeMixin
 from patterns.prototype import PrototypeMixin
 
 
@@ -15,10 +14,7 @@ class Student(User):
 
 
 class UserFactory:
-    types = {
-        'student': Student,
-        'teacher': Teacher
-    }
+    types = {"student": Student, "teacher": Teacher}
 
     @classmethod
     def create(cls, type_):
@@ -58,10 +54,7 @@ class RecordCourse(Course):
 
 
 class CourseFactory:
-    types = {
-        'interactive': InteractiveCourse,
-        'record': RecordCourse
-    }
+    types = {"interactive": InteractiveCourse, "record": RecordCourse}
 
     @classmethod
     def create(cls, type_, name, category):
@@ -85,12 +78,12 @@ class TrainingSite:
 
     def find_category_by_id(self, id):
         for item in self.categories:
-            print('item', item.id)
+            print("item", item.id)
             if item.id == id:
                 return item
             else:
                 return item
-        raise Exception(f'Нет категории с id = {id}')
+        raise Exception(f"Нет категории с id = {id}")
 
     @staticmethod
     def create_course(type_, name, category):

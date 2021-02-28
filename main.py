@@ -1,6 +1,3 @@
-from src.conf import middlewares
-from src.core import Application
+from src.views import application
 
-from src.urls import urlpatterns
-
-application = Application(urlpatterns, middlewares)
+app = application
