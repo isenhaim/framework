@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="col-md-8 mx-auto">
+        <h1 class="text-center mt-5">Список студентов</h1>
+
+        <table class="table text-center mt-5">
+            <thead class="table-dark">
+                <tr>
+                    <td>Имя студента</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in objects_list %}
+                <tr>
+                    <td>{{item.name}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

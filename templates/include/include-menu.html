@@ -5,29 +5,54 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="navbar-right">
-            <ul class="navbar-nav navbar-right mr-auto mb-2 mb-lg-0">
+        <div class="navbar col-md-12">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/">Главная</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/create-category/">Создать категорию</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/create-course/">Создать курс</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/category-list/">Список категорий</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/courses-list/">Список курсов</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/contact/">Контакты</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about/">Информация</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Категории
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/create-category/">Создать категорию</a>
+                        <a class="dropdown-item" href="/category-list/">Список категорий</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Курсы
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/create-course/">Создать курс</a>
+                        <a class="dropdown-item" href="/courses-list/">Список курсов</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Студенты
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/create-student/">Регистрация студента</a>
+                        <a class="dropdown-item" href="/student-list/">Список студентов</a>
+                        <a class="dropdown-item" href="/add-student/">Регистрация студента курс</a>
+                    </div>
+                </li>
+
+
             </ul>
         </div>
     </div>
