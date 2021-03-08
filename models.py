@@ -2,6 +2,7 @@ import jsonpickle
 
 from patterns.observer import Observer, Subject
 from patterns.prototype import PrototypeMixin
+from src.unitofwork import DomainObject
 
 
 class BaseSerializer:
@@ -25,7 +26,7 @@ class Teacher(User):
     pass
 
 
-class Student(User):
+class Student(User, DomainObject):
     def __init__(self, name):
         self.courses = []
         super().__init__(name)

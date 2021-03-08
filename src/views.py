@@ -5,15 +5,18 @@ from models import BaseSerializer, EmailNotifier, SmsNotifier, TrainingSite
 from src.cbv import CreateView, ListView
 from src.conf import code_success, middlewares
 from src.core import Application, DebugApplication, FakeApplication
+from src.mappers import MapperRegistry
 from src.render import render
 
 # from src.urls import urlpatterns
+from src.unitofwork import UnitOfWork
 
 site = TrainingSite()
 logger = Logger("views")
 email_notifier = EmailNotifier()
 sms_notifier = SmsNotifier()
-
+UnitOfWork.new_current()
+UnitOfWork.get_current().set_mapper_registry(MapperRegistry)
 
 # application = DebugApplication(urlpatterns, middlewares)
 # application = FakeApplication(urlpatterns, middlewares)
@@ -27,11 +30,17 @@ class StudentCreateView(CreateView):
         name = name.replace("+", " ")
         new_object = site.create_user("student", name)
         site.students.append(new_object)
+        new_object.mark_new()
+        UnitOfWork.get_current().commit()
+
 
 
 class StudentListView(ListView):
-    queryset = site.students
     template = "list_students.html"
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('student')
+        return mapper.all()
 
 
 class CategoryCreateView(CreateView):
